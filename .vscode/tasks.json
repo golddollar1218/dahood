@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup clean URLs (Live Server)",
+      "type": "shell",
+      "command": "node scripts/setup-clean-urls.mjs",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Generate /u profile pages (Live Server)",
+      "type": "shell",
+      "command": "node scripts/generate-u-pages.mjs",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Dev server (rewrites, no page generation)",
+      "type": "shell",
+      "command": "npx --yes serve -l 5502 -c serve.json",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Accepting connections"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ]
+}

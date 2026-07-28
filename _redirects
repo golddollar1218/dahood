@@ -1,0 +1,6 @@
+/stack  /stack.html  200
+/rooms  /rooms.html  200
+/launch  /launch.html  200
+/scout  /scout.html  200
+/legal  /legal.html  200
+/u/*  /u/[address].html  200
