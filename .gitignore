@@ -1,5 +1,5 @@
 # Generated for Live Server / static hosts without URL rewrites
-/u/0x*/
+# Note: do not ignore /u/0x*/ — Vercel build creates these and .gitignore excludes them from deploy.
 /stack/
 /rooms/
 /launch/
