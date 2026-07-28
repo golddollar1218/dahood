@@ -1,0 +1,7 @@
+{
+  "name": "dahood-fun",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/generate-u-pages.mjs && node scripts/setup-clean-urls.mjs"
+  }
+}

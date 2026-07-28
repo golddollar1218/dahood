@@ -3,4 +3,4 @@
 /launch  /launch.html  200
 /scout  /scout.html  200
 /legal  /legal.html  200
-/u/*  /u/[address].html  200
+/u/*  /u/profile.html  200

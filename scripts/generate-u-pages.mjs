@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Live Server (and other static hosts without rewrites) need a real file at
- * u/<address>/index.html for each /u/<address> URL. Production uses u/[address].html + rewrites.
+ * u/<address>/index.html for each /u/<address> URL. Vercel rewrites unknown /u/* to u/profile.html.
  */
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
@@ -41,12 +41,15 @@ try {
   console.warn("indexer unreachable — keeping existing u/ pages only");
 }
 
-// Drop previously generated address folders (keep u/[address].html, u/_template-base.html).
+// Drop previously generated address folders (keep u/profile.html, u/_template-base.html).
 for (const name of await readdir(join(root, "u")).catch(() => [])) {
   if (name.startsWith("0x")) {
     await rm(join(root, "u", name), { recursive: true, force: true });
   }
 }
+
+// Fallback shell for hosts that rewrite /u/* → /u/profile (Vercel, Netlify).
+await writeFile(join(root, "u", "profile.html"), template, "utf8");
 
 let written = 0;
 for (const subject of subjects) {
@@ -60,4 +63,4 @@ for (const subject of subjects) {
   written++;
 }
 
-console.log(`Generated ${written} profile pages under u/<address>/index.html`);
+console.log(`Generated u/profile.html + ${written} pages under u/<address>/index.html`);
